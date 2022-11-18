@@ -1,13 +1,35 @@
-<div class="container col-5 my-5">
+<div class="container my-5">
 
-<h1> My Lists</h1>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path('cinema.jpg') %>');">
+    <div class="container">
+      <h1>Save any kind of movies</h1>
+    </div>
+  </div>
 
-<% @lists.each do |list| %>
-  <ul>
-    <li><%= link_to "#{list.name}", list_path(list) %></li>
-  </ul>
-<% end %>
+  <div class="d-flex justify-content-between mt-5">
+    <h3> My Lists</h3>
+    <%= link_to "Create a new list", new_list_path, class: "btn btn-warning" %>
+  </div>
+    <div class=" row d-flex flex-wrap">
+      <% @lists.each do |list| %>
+        <div class="col-4 my-2">
+          <% if list.photo.key %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+              <%= link_to "#{list.name}", list_path(list), class: "text-decoration-none text-white fw-bold" %>
+            </div>
+          <% else %>
+            <div class="card-category" style="background: black">
+              <%= link_to "#{list.name}", list_path(list), class: "text-decoration-none text-white fw-bold" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
-<%= link_to "Create a new list", new_list_path, class: "btn btn-primary" %>
+
 
 </div>
+
+<%# <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
+  Breakfast
+</div> %>
