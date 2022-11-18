@@ -10,7 +10,6 @@
 
 <%= link_to "See all lists", lists_path, class: "btn btn-primary" %>
 
-<%= link_to "Go back to my #{@list.name}'s list", list_path(@list), class: "btn btn-primary" %>
+<%= link_to "Go back to my #{@list.name}'s list", root_path(@list), class: "btn btn-primary" %>
 
 </div>
-
