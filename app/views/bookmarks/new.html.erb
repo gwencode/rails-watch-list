@@ -5,12 +5,12 @@
     <%= simple_form_for(@bookmark, as: :bookmark, method: :post, url: list_bookmarks_path) do |f| %>
       <%= f.input :comment %>
       <%= f.association :movie %>
-      <%= f.submit "Add Bookmark", class: "btn btn-primary" %>
+      <%= f.submit "Add Movie to my List", class: "btn btn-primary" %>
     <% end %>
 
-<%= link_to "See all lists", lists_path %>
+<%= link_to "See all lists", lists_path, class: "btn btn-primary" %>
 
-<%= link_to "Go back to my #{@list.name}'s list", list_path(@list) %>
+<%= link_to "Go back to my #{@list.name}'s list", list_path(@list), class: "btn btn-primary" %>
 
 </div>
 
