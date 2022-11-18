@@ -2,7 +2,7 @@
 
 # Lists Controller
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show]
+  before_action :set_list, only: %i[show destroy]
 
   def new
     @list = List.new
@@ -22,6 +22,12 @@ class ListsController < ApplicationController
   end
 
   def show; end
+
+  def destroy
+    @list.destroy
+
+    redirect_to root_path, status: :see_other
+  end
 
   private
 
