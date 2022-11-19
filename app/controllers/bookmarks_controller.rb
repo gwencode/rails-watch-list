@@ -2,12 +2,7 @@
 
 # Bookmark Controller
 class BookmarksController < ApplicationController
-  before_action :set_list, only: %i[new create]
-
-  def new
-    @bookmark = Bookmark.new
-    @movies = Movie.all
-  end
+  before_action :set_list, only: %i[create]
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
@@ -15,7 +10,7 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to list_path(@bookmark.list_id)
     else
-      render :new, status: :unprocessable_entity
+      render 'lists/show', status: :unprocessable_entity
     end
   end
 

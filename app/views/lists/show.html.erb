@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class='container my-5'>
 
   <div class="banner"
        style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@list.photo.key, height: 300, crop: :fill) %>');">
@@ -8,7 +8,7 @@
   </div>
 
   <div class="d-flex justify-content-end mt-5">
-    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-success" %>
+    <a href="#anchor-form" class="btn btn-success">Add a movie</a>
   </div>
 
   <div class="card-group">
@@ -35,8 +35,17 @@
     <% end %>
   </div>
 
+  <div class="col-6 my-3 m-auto ">
+    <div class="d-flex justify-content-center">
+      <h4 id='anchor-form' >Add a movie to my <%= @list.name %>'s list</h4>
+    </div>
+    <div>
+      <%= simple_form_for(@bookmark, as: :bookmark, method: :post, url: list_bookmarks_path(@list)) do |f| %>
+          <%= f.input :comment %>
+          <%= f.association :movie %>
+          <div class="text-center"><%= f.submit "Add Movie to my List", class: "btn btn-success" %></div>
+        <% end %>
+    </div>
+  </div>
 
 </div>
-
-<%# List.all %>
-<%# List.all[2] => ALl time favourites list %>

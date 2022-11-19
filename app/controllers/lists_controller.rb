@@ -21,7 +21,10 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
-  def show; end
+  def show
+    @bookmark = Bookmark.new
+    @movies = Movie.all
+  end
 
   def destroy
     @list.destroy
