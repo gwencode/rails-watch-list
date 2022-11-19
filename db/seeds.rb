@@ -17,6 +17,9 @@
 require "json"
 require "open-uri"
 
+Bookmark.destroy_all
+Movie.destroy_all
+
 url = "https://tmdb.lewagon.com/movie/top_rated?api_key=<Cyour_api_key>"
 movies_serialized = URI.open(url).read
 movies = JSON.parse(movies_serialized)
