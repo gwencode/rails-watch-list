@@ -4,21 +4,18 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[show destroy]
 
-  def new
-    @list = List.new
-  end
-
   def create
     @list = List.new(list_params)
     if @list.save
       redirect_to root_path(@list)
     else
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
   def index
     @lists = List.all
+    @list = List.new
   end
 
   def show
